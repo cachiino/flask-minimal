@@ -1,8 +1,6 @@
 # flask-minimal
 ---
-Sebelum memulai, temen-temen harus tau dulu nih apasih flask itu?? terus apasih kegunaannya?
-Flask adalah framework web berbasis Python yang digunakan untuk membangun aplikasi web. Flask bersifat ringan (minimalis) dan fleksibel, sehingga sangat cocok untuk pemula maupun pengembang profesional yang ingin membuat aplikasi web dengan cepat dan efisien.
-Kali ini kita bakal buat flask sesimpel mungkin, namun juga punya beberapa fitur yang berguna!! 
+### Sebelum memulai, temen-temen harus tau dulu nih apasih flask itu?? terus apasih kegunaannya? Flask adalah framework web berbasis Python yang digunakan untuk membangun aplikasi web. Flask bersifat ringan (minimalis) dan fleksibel, sehingga sangat cocok untuk pemula maupun pengembang profesional yang ingin membuat aplikasi web dengan cepat dan efisien. Nah kali ini kita bakal buat flask sesimpel mungkin, namun juga punya beberapa fitur yang berguna!! 
 ---
 
 ## ✨ Fitur Utama
