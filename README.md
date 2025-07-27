@@ -1,63 +1,136 @@
+
 # flask-minimal
+Sebelum memulai, temen-temen harus tau dulu nih apasih flask itu?? terus apasih kegunaannya?
+Flask adalah framework web berbasis Python yang digunakan untuk membangun aplikasi web. Flask bersifat ringan (minimalis) dan fleksibel, sehingga sangat cocok untuk pemula maupun pengembang profesional yang ingin membuat aplikasi web dengan cepat dan efisien.
+Kali ini kita bakal buat flask sesimpel mungkin, namun juga punya beberapa fitur yang berguna!! 
+---
 
-A minimal Flask starter project designed to help you quickly set up a clean, simple, and efficient web application. This project is structured to keep things lightweight and focuses on productivity, with all your code contained in a single file (`app.py`), along with basic templates and static assets.
+## ✨ Fitur Utama
 
+* ✅ Aplikasi Flask hanya dalam satu file (`app.py`) — praktis dan cepat!
+* 🎨 Template HTML sederhana dengan styling dan JavaScript minimal.
+* 🚀 Setup super gampang, cocok buat pemula atau prototipe cepat.
+* 🔧 Mudah diubah sesuai kebutuhan aplikasi web kamu.
+* ✔ Tidak akan hilang walaupun mesin direboot
 
-## Features
-- Single-file Flask application (`app.py`) to maximize productivity and simplicity.
-- Basic HTML template structure with minimal styling and JavaScript.
-- Simple and intuitive project setup with no unnecessary complexity.
-- Easily customizable for rapid development of web applications.
+---
 
-## Preparation
+## 🔧 Persiapan Awal
+### 1. Fork github ini ke repository kalian
+<pre>a. buka halaman github yang akan di fork
+b. pilih fork di bagian kanan atas 
+c. buka halaman github yang sudah di fork ke akun kalian
+  </pre>
+### 2. Buat instance di AWS 
+<pre>a. Beri nama instance pada bagian "Name"
+b. Pilih OS Ubuntu
+c. Instance type : t2.nano
+d. Key pair : vockey
+e. Security group :
+   Allow SSH (port 22)
+f. Jika sudah klik "Launch Instance"
+g. Jika instance tidak muncul, refresh halaman instance
+</pre>
+### 3. Tambahkan port 5000
+<pre>a. klik ID Instance
+b. scroll ke bawah lalu pilih security
+c. klik bagian "Security Groups" 
+d. pilih "Edit inbound rules"
+e. "Add rule" 
+   Type : Custom TCP 
+   Port range : 5000
+   Source : Anywhere-IPv4
+f. jika sudah sesuai klik "Save rules"
+</pre>
+### 4. Masuk ke terminal ec2
+a. klik ID Instance
+b. klik "connect" di bagian kanan atas
+c. scroll sedikit ke bawah kemudian pilih "Connect"
+
+Nah persiapan awal sudah selesai teman-teman semua~. 
+Untuk selanjutnya ayo kita mulai menuliskan script nya🎉🎉
+
+## Cara Instalasi
+### 1. Pastikan Python sudah terinstall dengan cara :
+
 ```bash
 sudo apt update
 sudo apt install python3 python3-venv python3-pip -y
 ```
 
-## Installation
+### 2. Clone repositorimu:
 
-1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/flask-minimal.git
    cd flask-minimal
    ```
 
-2. Create a virtual environment (recommended):
+### 3. Buat virtual environment:
+
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. Install the required dependencies:
+### 4. Install semua kebutuhan proyek:
+
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Run the app:
+### 5. Jalankan aplikasinya:
+
    ```bash
    python app.py
    ```
 
-The Flask app will start, and you can view it by navigating to http://localhost:5000 in your browser.
+Jika sudah sampai sini web temen-temen udah bisa diakses loh! pake public ip dan tambahkan ":5000" di belakangnya. Namun sayangnya kalo cuma sampe sini, web kita gabisa diakes kalo terminalnya di close ataupun mesinnya direboot :(.
+Maka dari itu aku udah siapin nih caranya supaya web kita tetap bisa diakses walaupun terminalnya kita tutup atau mesinnya kita reboot! 
 
-## Usage
+### 6. Tekan CTRL+C untuk keluar dari server flask
 
-This starter project is ready to be used as a foundation for building web applications. The app.py file contains all the Flask routes and logic, making it simple to expand and customize. You can add more templates, routes, or static files as needed.
+### 7. Buat File Service untuk Systemd
+```bash
+sudo nano /etc/systemd/system/flaskapp.service
+```
+### 8. Isi dengan :
+```bash
+[Unit]
+Description=Flask Minimal App
+After=network.target
 
-## Customization
-You can easily modify:
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/flask-minimal
+ExecStart=/home/ubuntu/flask-minimal/venv/bin/python app.py
+Restart=always
 
- - The HTML structure in `templates/index.html`
- - The styling in `static/style.css`
- - The interactivity in `static/script.js`
+[Install]
+WantedBy=multi-user.target
+```
 
-Feel free to update the app.py file to add your routes or any additional logic to fit your needs.
+### 9. Reload dan Jalankan Servicenya
+```bash
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable flaskapp
+sudo systemctl start flaskapp
+```
 
-## License
-This project is licensed under the MIT License.
+Sekarang buka browser dan kunjungi Public ip kamu dan tambahkan ":5000" di belakangnya!
+contoh :
+```bash
+54.162.37.27:5000
+```
+---
 
-## Contributing
-Feel free to fork this repository and create pull requests if you have improvements or bug fixes. If you have any suggestions, open an issue, and we’ll discuss it!
+## 💡 Cara Menggunakan
+Kamu bisa mulai modifikasi bagian-bagian berikut:
 
-This project is built with simplicity and efficiency in mind, perfect for quickly starting small web apps or prototypes with minimal overhead.
+* 🖼 HTML → `templates/index.html`
+* 🎨 CSS → `static/style.css`
+* ⚙️ JavaScript → `static/script.js`
+* 🔄 Rute & logika Flask → `app.py`
+---
+Nah sekarang kamu sudah tau dan sudah bisa flask!
+Semoga membantu yaaa💞💞
