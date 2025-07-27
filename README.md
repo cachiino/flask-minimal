@@ -1,5 +1,5 @@
-
 # flask-minimal
+---
 Sebelum memulai, temen-temen harus tau dulu nih apasih flask itu?? terus apasih kegunaannya?
 Flask adalah framework web berbasis Python yang digunakan untuk membangun aplikasi web. Flask bersifat ringan (minimalis) dan fleksibel, sehingga sangat cocok untuk pemula maupun pengembang profesional yang ingin membuat aplikasi web dengan cepat dan efisien.
 Kali ini kita bakal buat flask sesimpel mungkin, namun juga punya beberapa fitur yang berguna!! 
@@ -43,10 +43,10 @@ e. "Add rule"
 f. jika sudah sesuai klik "Save rules"
 </pre>
 ### 4. Masuk ke terminal ec2
-a. klik ID Instance
+<pre>a. klik ID Instance
 b. klik "connect" di bagian kanan atas
 c. scroll sedikit ke bawah kemudian pilih "Connect"
-
+</pre>
 Nah persiapan awal sudah selesai teman-teman semua~. 
 Untuk selanjutnya ayo kita mulai menuliskan script nya🎉🎉
 
